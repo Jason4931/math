@@ -159,7 +159,16 @@
       clearTimeout(hintTimeout);
 
       let loop = true;
+      let iteration = 1;
       while (loop) {
+        if (iteration > 30) {
+          random1 = generateRandomNumber(false, false, effectiveRange);
+          random2 = 0;
+          result = random1;
+          document.getElementById("question").innerHTML = `${random1} + ${random2}`;
+          loop = false;
+          break;
+        }
         switch (equation) {
           case 1:
             if (document.getElementById("plus").checked) {
@@ -278,6 +287,7 @@
             }
             break;
         }
+        iteration++;
       }
 
       hintTimeout = setTimeout(() => {
